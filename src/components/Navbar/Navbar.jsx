@@ -3,7 +3,7 @@ import LoginBtn from "../LoginBtn/LoginBtn";
 
 const Navbar = () => {
     const links = <>
-        <li><NavLink to={'/home'} className='text-gray-400 font-semibold'>Home</NavLink></li>
+        <li><NavLink to={'/'} className='text-gray-400 font-semibold'>Home</NavLink></li>
         <li><NavLink to={'/about'} className='text-gray-400 font-semibold'>About</NavLink></li>
         <li><NavLink to={'/career'} className='text-gray-400 font-semibold'>Career</NavLink></li>
     </>

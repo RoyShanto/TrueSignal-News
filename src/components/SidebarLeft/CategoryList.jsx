@@ -11,14 +11,16 @@ const CategoryList = () => {
 
     return (
         <div>
-            <h3 className='font-semibold text-2xl'>All Category</h3>
+            <h3 className='font-semibold text-2xl py-5'>All Category</h3>
             <div className="flex flex-col gap-2">
                 {
                     categories.length ?
                         categories.map(category =>
-                            <button className='btn text-gray-500 text-lg' key={category.category_id}>
+                            <NavLink to={`category/${category.category_id}`}
+                                className={({ isActive }) => `btn bg-base-100 border-none text-gray-500 text-lg ${isActive ? 'bg-base-300' : ''}`}
+                                key={category.category_id}>
                                 {category.category_name}
-                            </button>)
+                            </NavLink>)
                         : <span className="loading loading-bars loading-xl mx-auto mt-16"></span>
                 }
             </div>

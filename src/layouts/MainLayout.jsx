@@ -4,6 +4,7 @@ import BreakingNewsTicker from '../components/BreakingNewsTicker/BreakingNewsTic
 import Navbar from '../components/Navbar/Navbar';
 import SidebarLeft from '../components/SidebarLeft/SidebarLeft';
 import SidebarRight from '../components/SidebarRight/SidebarRight';
+import { Outlet } from 'react-router';
 
 const MainLayout = () => {
     return (
@@ -18,7 +19,7 @@ const MainLayout = () => {
                     <SidebarLeft/>
                 </aside>
                 <div className='col-span-6'>
-                    <h3 className='font-semibold text-2xl'>TrueSignal News Home</h3>
+                    <Outlet/>
                 </div>
                 <aside className='col-span-3'>
                     <SidebarRight/>
