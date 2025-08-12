@@ -4,6 +4,7 @@ import MainLayout from '../layouts/MainLayout';
 import About from '../pages/About/About';
 import Career from '../pages/Career/Career';
 import CategoryNews from '../components/CategoryNews/CategoryNews';
+import NewsDetail from '../components/NewsDetail/NewsDetail';
 
 
 const Routes = createBrowserRouter([
@@ -16,6 +17,13 @@ const Routes = createBrowserRouter([
         path: "category/:id",
         Component: CategoryNews,
         loader: ({ params }) => fetch(`https://openapi.programming-hero.com/api/news/category/${params.id}`)
+      },
+      {
+        path: "category/:c_id/news/:news_id",
+        Component: NewsDetail,
+        loader: ({ params }) => 
+          // console.log(params)
+          fetch(`https://openapi.programming-hero.com/api/news/${params.news_id}`)
       },
     ],
   },
