@@ -1,12 +1,32 @@
-# React + Vite
+# <img src="assets/logo.png">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TrueSignal News is a responsive front-end web application build with react that delivers real-time news articles on a variety of topics, complete with user authentication for personalized access. Built with modern web technologies, the app ensures a seamless user experience across devices and secure login functionality using firebase authentication.let's build the project together. 😎
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Endpoints
 
-## Expanding the ESLint configuration
+1. **Get All News Categories**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+   - **URL**: `/news/categories`
+   - **Full URL**: https://openapi.programming-hero.com/api/news/categories
+   - **Method**: `GET`
+   - **Description**: Retrieves a list of all available news categories.
+
+2. **Get All News in a Category**
+
+   - **URL Format**: `/news/category/{category_id}`
+   - **Full URL Example**: https://openapi.programming-hero.com/api/news/category/01
+   - **Method**: `GET`
+   - **Description**: Retrieves all news articles within a specified category.
+   - **Path Parameter**:
+     - `category_id` (string): The unique ID of the category.
+
+3. **Get News Detail by ID**
+   - **URL Format**: `/news/{news_id}`
+   - **Full URL Example**: https://openapi.programming-hero.com/api/news/0282e0e58a5c404fbd15261f11c2ab6a
+   - **Method**: `GET`
+   - **Description**: Retrieves detailed information about a specific news article.
+   - **Path Parameter**:
+     - `news_id` (string): The unique ID of the news article.
+
+
