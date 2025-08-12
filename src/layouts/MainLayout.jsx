@@ -7,7 +7,7 @@ import SidebarRight from '../components/SidebarRight/SidebarRight';
 
 const MainLayout = () => {
     return (
-        <div className='mx-auto'>
+        <div className='w-11/12 mx-auto'>
             <header>
                 <Header />
                 <BreakingNewsTicker />
