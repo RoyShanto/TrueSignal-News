@@ -1,7 +1,10 @@
-import { NavLink } from "react-router";
-import LoginBtn from "../LoginBtn/LoginBtn";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext)
+
     const links = <>
         <li><NavLink to={'/'} className='text-gray-400 font-semibold'>Home</NavLink></li>
         <li><NavLink to={'/about'} className='text-gray-400 font-semibold'>About</NavLink></li>
@@ -28,7 +31,15 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <LoginBtn/>
+                {
+                    user ? <>
+                        <h3>{user && user.email}</h3>
+                        <button onClick={logOut} className='btn px-8 bg-[#2f2f2fef] text-white'> LogOut</button>
+                    </>
+                        : <Link to={'/auth/login'} className='btn px-8 bg-[#2f2f2fef] text-white'> Login</Link>
+
+                }
+
             </div>
         </div>
     );

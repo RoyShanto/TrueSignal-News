@@ -3,7 +3,13 @@ import { Link } from "react-router";
 
 const NewsCard = ({ news }) => {
     // console.log(news)
-    const { _id, author, title, image_url, details, rating, total_view } = news;
+    const { _id, author, title, image_url, details, rating, total_view, } = news;
+
+
+    const shortText = details?.length > 300
+        ? news.details.slice(0, 300) + "..."
+        : news?.details;
+
 
     return (
         <div className="card bg-base-100 shadow-md mb-7">
@@ -30,11 +36,11 @@ const NewsCard = ({ news }) => {
             <h2 className="px-4 pt-4 font-bold text-lg leading-snug"> {title} </h2>
 
             {/* Image */}
-            <figure className="px-4 py-3"> <img src={image_url} alt="news" className="rounded-lg" /> </figure>
+            <figure className="px-4 py-3"> <img src={image_url} alt="news" className="rounded-lg w-full" /> </figure>
 
             {/* Description */}
             <p className="px-4 text-sm text-gray-500">
-                {details}
+                {shortText}
                 <Link to={`news/${_id}`} className="text-orange-500 cursor-pointer"> Read More</Link>
             </p>
             <hr className="mx-4 mt-3 border-t-gray-200" />

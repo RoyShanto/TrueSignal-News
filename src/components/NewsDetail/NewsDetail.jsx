@@ -7,7 +7,7 @@ const NewsDetail = () => {
     const {image_url, title, author, details, category_id} = newsDetails;
     return (
         <div className="max-w-4xl mx-auto px-4 py-8">
-            <h2 className="text-lg font-semibold mb-4">Dragon News</h2>
+            <h2 className="text-lg font-semibold mb-4">TrueSignal News</h2>
 
             <div className="bg-white rounded-lg shadow-md p-4">
                 {/* News Image */}

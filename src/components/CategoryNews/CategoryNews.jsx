@@ -13,7 +13,7 @@ const CategoryNews = () => {
             {
                 allNews.length ?
                     allNews.map(news => <NewsCard key={news._id} news={news} />)
-                    : <h1 className='text-center text-4xl font-semibold text-red-500 mt-28 mask-t-from-30%'>No Data Found</h1>
+                    : <h1 className='text-center text-4xl font-semibold text-red-500 mt-28 mask-t-from-30%'>No News Found</h1>
             }
         </div>
     );
