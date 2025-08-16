@@ -1,13 +1,14 @@
-import { createContext, useState } from "react";
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createContext, useEffect, useState } from "react";
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import app from "../firebase/firebase.config"
+
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState({})
-
+    const [user, setUser] = useState(null)
 
     const createNewUser = (name, email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
@@ -16,15 +17,27 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
     const logOut = () => {
-        signOut(auth).then(() => {
-            console.log("LogOut Successful")
-            setUser(null)
-        }).catch((error) => {
-            console.log(error.message)
-        });
+        return signOut(auth)
     }
 
-console.log("user", user)
+    const signInWithGoogle = () => {
+        return signInWithPopup(auth, provider)
+    }
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            if (currentUser) {
+                setUser(currentUser);
+                console.log("Logged in user:", currentUser);
+            } else {
+                setUser(null);
+                console.log("No user logged in");
+            }
+        });
+
+        return () => unsubscribe(); // cleanup listener
+    }, []);
+
 
 
     const authInfo = {
@@ -32,7 +45,8 @@ console.log("user", user)
         setUser,
         createNewUser,
         signInUser,
-        logOut
+        logOut,
+        signInWithGoogle
     }
     return <AuthContext.Provider value={authInfo}>
         {children}

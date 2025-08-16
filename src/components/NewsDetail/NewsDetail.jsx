@@ -3,8 +3,8 @@ import { Link, useLoaderData } from 'react-router';
 const NewsDetail = () => {
     const news = useLoaderData();
     const newsDetails = news.data[0]
-    console.log(newsDetails)
-    const {image_url, title, author, details, category_id} = newsDetails;
+    console.log('newsDetails', newsDetails)
+    const { image_url, title, author, details, category_id } = newsDetails;
     return (
         <div className="max-w-4xl mx-auto px-4 py-8">
             <h2 className="text-lg font-semibold mb-4">TrueSignal News</h2>
@@ -29,7 +29,7 @@ const NewsDetail = () => {
                 <p className="text-gray-500 leading-relaxed mb-6 inline">
                     {details}
                 </p>
-                
+
                 <br /><br />
 
                 {/* Back Button */}
