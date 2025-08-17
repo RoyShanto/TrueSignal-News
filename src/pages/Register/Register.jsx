@@ -36,7 +36,7 @@ const Register = () => {
     return (
         <div className='flex justify-center m-10'>
             <form onSubmit={handleRegister} className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-                <legend className=" text-center ">Register Your Account</legend>
+                <legend className="font-bold text-lg text-center">Register Your Account</legend>
 
                 <label className="label">Name</label>
                 <input name='name' type="text" className="input" placeholder="Name" />
