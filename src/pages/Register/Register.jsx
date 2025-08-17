@@ -1,26 +1,35 @@
 
 import { useContext } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../../provider/AuthProvider';
 
 
 const Register = () => {
-    const { setUser, createNewUser } = useContext(AuthContext);
-
+    const { setUser, createNewUser, updateUserProfile } = useContext(AuthContext);
+    const navigate = useNavigate()
 
     const handleRegister = (e) => {
         e.preventDefault()
         const name = e.target.name.value;
+        const photoUrl = e.target.photoUrl.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        createNewUser(name, email, password)
+        console.log(name, photoUrl, email, password)
+
+        createNewUser(email, password)
             .then((result) => {
-                console.log(result)
-                setUser(result.user)
+                updateUserProfile(name, photoUrl)
+                    .then(() => {
+                        setUser(result.user)
+                        navigate("/")
+                        alert("New user created and profile updated")
+                    }).catch((error) => {
+                        console.log("Profile Updated error: ", error.message)
+                    });
             })
             .catch((error) => {
-                console.log(error.message)
+                console.log("New user created error: ", error.message)
             });
 
     }
@@ -31,6 +40,9 @@ const Register = () => {
 
                 <label className="label">Name</label>
                 <input name='name' type="text" className="input" placeholder="Name" />
+
+                <label className="label">Photo Url</label>
+                <input name='photoUrl' type="text" className="input" placeholder="Photo Url" />
 
                 <label className="label">Email</label>
                 <input name='email' type="email" className="input" placeholder="Email" />

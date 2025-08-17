@@ -46,7 +46,10 @@ const Navbar = () => {
             <div className="navbar-end">
                 {
                     user ? <>
-                        <h3>{user ? user.email : <h1>None</h1>}</h3>
+                        {user && <>
+                            <p>{user.displayName}</p>
+                            <img src={user.photoURL} className="w-10 rounded-full" alt="" />
+                        </>}
                         <button onClick={handleSignOut} className='btn px-8 bg-[#2f2f2fef] text-white'> LogOut</button>
                     </>
                         : <Link to={'/auth/login'} className='btn px-8 bg-[#2f2f2fef] text-white'> Login</Link>
